@@ -5,7 +5,7 @@
     <router-link to="/input">input</router-link>
     &nbsp;
     <router-link to="/show">show</router-link>
-    &nbsp;
+    &nbsp; &nbsp;
   </div>
 </template>
 
