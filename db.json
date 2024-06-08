@@ -1,7 +1,44 @@
 {
-  "test": [
-    { "id": 1, "money": 1000 },
-    { "id": 2, "money": 1000 },
-    { "id": 3, "money": 1000 }
+  "budget": [
+    {
+      "id": "1",
+      "date": "2024-06-08",
+      "type": "income",
+      "category": "월급",
+      "detailCategory": "주수입",
+      "amount": 5000000,
+      "memo": "June Salary"
+    },
+    {
+      "id": "2",
+      "date": "2024-06-08",
+      "type": "expense",
+      "category": "식비",
+      "detailCategory": "점심",
+      "amount": 10000,
+      "memo": "Lunch with colleagues"
+    }
+  ],
+  "incomeCategory": [
+    { "name": "월급" },
+    { "name": "용돈" },
+    { "name": "이자" },
+    { "name": "기타" }
+  ],
+  "expenseCategory": [
+    { "name": "식비" },
+    { "name": "교통비" },
+    { "name": "유흥" },
+    { "name": "공과금" },
+    { "name": "기타" }
+  ],
+  "periodicExpense": [
+    {
+      "date": "2024-06-01",
+      "type": "expense",
+      "category": "공과금",
+      "amount": 50000,
+      "memo": "Electricity bill"
+    }
   ]
 }
