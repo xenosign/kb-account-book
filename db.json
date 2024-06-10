@@ -1,36 +1,131 @@
 {
-  "budget": [
+  "income": [
     {
       "id": "1",
       "date": "2024-06-08",
-      "type": "income",
-      "category": "월급",
-      "detailCategory": "주수입",
+      "category": "주수입",
+      "detailCategory": "월급",
       "amount": 5000000,
       "memo": "June Salary"
     },
     {
       "id": "2",
       "date": "2024-06-08",
-      "type": "expense",
-      "category": "식비",
-      "detailCategory": "점심",
+      "category": "부수입",
+      "detailCategory": "아르바이트",
       "amount": 10000,
       "memo": "Lunch with colleagues"
     }
   ],
   "incomeCategory": [
-    { "name": "월급" },
-    { "name": "용돈" },
-    { "name": "이자" },
-    { "name": "기타" }
+    {
+      "name": "주수입",
+      "id": "63fd"
+    },
+    {
+      "name": "부수입",
+      "id": "549a"
+    }
+  ],
+  "detailCategory": {
+    "mainIncome": [
+      {
+        "name": "월급"
+      },
+      {
+        "name": "기타"
+      }
+    ],
+    "subIncome": [
+      {
+        "name": "아르바이트"
+      },
+      {
+        "name": "주식"
+      },
+      {
+        "name": "코인"
+      },
+      {
+        "name": "이자"
+      },
+      {
+        "name": "기타"
+      }
+    ]
+  },
+  "expense": [
+    {
+      "id": "1",
+      "date": "2024-06-08",
+      "category": "식비",
+      "amount": 6000,
+      "memo": "세종대 학식"
+    },
+    {
+      "id": "2",
+      "date": "2024-06-08",
+      "category": "유흥",
+      "amount": 70000,
+      "memo": "건대 술익는 마을"
+    },
+    {
+      "id": "4d17",
+      "date": "2024-06-10T02:00:27.837Z",
+      "category": "교통비",
+      "amount": "111",
+      "memo": "111"
+    },
+    {
+      "id": "e9a2",
+      "date": "2024-06-10T03:10:09.192Z",
+      "category": "교통비",
+      "amount": "3333",
+      "memo": "12"
+    },
+    {
+      "id": "25e2",
+      "date": "2024-06-10T03:10:38.329Z",
+      "category": "교통비",
+      "amount": "111",
+      "memo": "111"
+    },
+    {
+      "id": "4589",
+      "date": "2024-06-10T03:11:40.948Z",
+      "category": "공과금",
+      "amount": "12",
+      "memo": "전기"
+    },
+    {
+      "id": "cbfd",
+      "date": "2024-06-10T03:18:23.328Z",
+      "category": "",
+      "amount": 0,
+      "memo": ""
+    }
   ],
   "expenseCategory": [
-    { "name": "식비" },
-    { "name": "교통비" },
-    { "name": "유흥" },
-    { "name": "공과금" },
-    { "name": "기타" }
+    {
+      "name": "식비",
+      "id": "df57"
+    },
+    {
+      "name": "교통비",
+      "id": "caa9"
+    },
+    {
+      "name": "유흥",
+      "id": "0be8"
+    },
+    {
+      "name": "공과금",
+      "id": "b3fd"
+    },
+    {
+      "name": "기타",
+      "id": "7170"
+    }
   ],
   "periodicExpense": [
     {
@@ -38,7 +133,8 @@
       "type": "expense",
       "category": "공과금",
       "amount": 50000,
-      "memo": "Electricity bill"
+      "memo": "Electricity bill",
+      "id": "fc2c"
     }
   ]
 }
