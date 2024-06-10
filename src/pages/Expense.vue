@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>Expense</h1>
+    <h1>지출 등록</h1>
     <div v-if="isLoading">Loding</div>
 
     <div v-else>
       분류 :
-      <select v-model="expenseCategory">
+      <select v-model="expenseSelect">
         <option
-          v-for="option in expenseCategoryArr"
+          v-for="option in expenseCategory"
           :key="option.name"
           :value="option.name"
         >
@@ -29,11 +29,11 @@ import axios from 'axios';
 import { ref, reactive, onMounted } from 'vue';
 
 const BASEURL = '/api';
-const EXPENSECATEGORY = 'expenseCategory';
+const EXPENSE_CATEGORY = 'expenseCategory';
 
 const expense = ref(0);
-const expenseCategory = ref('');
-const expenseCategoryArr = ref([]);
+const expenseSelect = ref('식비');
+const expenseCategory = ref([]);
 const expenseMemo = ref('');
 
 const isLoading = ref(true);
@@ -52,7 +52,7 @@ async function fetchCategory(category) {
 }
 
 const fetchExpenseData = async () => {
-  expenseCategoryArr.value = await fetchCategory(EXPENSECATEGORY);
+  expenseCategory.value = await fetchCategory(EXPENSE_CATEGORY);
 
   isLoading.value = false;
 };
@@ -61,7 +61,7 @@ const sendExpenseData = async () => {
   try {
     const expenseData = {
       date: new Date(),
-      category: expenseCategory.value,
+      category: expenseSelect.value,
       amount: expense.value,
       memo: expenseMemo.value,
     };
@@ -70,12 +70,11 @@ const sendExpenseData = async () => {
 
     if (sendExpenseRes.status !== 201) return alert('지출 등록 실패');
 
-    expenseCategory.value = '';
     expense.value = 0;
     expenseMemo.value = '';
     return alert('지출 등록 완료');
   } catch (error) {
-    alert('${category} fetch 작업 중 ERR 발생');
+    alert('지출 fetch 작업 중 ERR 발생');
     console.log(error);
   }
 };

@@ -3,8 +3,7 @@
     {
       "id": "1",
       "date": "2024-06-08",
-      "category": "주수입",
-      "detailCategory": "월급",
+      "category": "월급",
       "amount": 5000000,
       "memo": "June Salary"
     },
@@ -12,48 +11,46 @@
       "id": "2",
       "date": "2024-06-08",
       "category": "부수입",
-      "detailCategory": "아르바이트",
       "amount": 10000,
       "memo": "Lunch with colleagues"
+    },
+    {
+      "id": "7022",
+      "date": "2024-06-10T14:28:04.419Z",
+      "category": "금융소득",
+      "amount": "30000",
+      "memo": "5월 월급"
+    },
+    {
+      "id": "e24f",
+      "date": "2024-06-10T15:12:07.067Z",
+      "category": "금융소득",
+      "amount": "10000000",
+      "memo": "코인 대박"
     }
   ],
   "incomeCategory": [
     {
-      "name": "주수입",
+      "name": "월급",
       "id": "63fd"
     },
     {
       "name": "부수입",
       "id": "549a"
+    },
+    {
+      "name": "용돈"
+    },
+    {
+      "name": "상여"
+    },
+    {
+      "name": "금융소득"
+    },
+    {
+      "name": "기타"
     }
   ],
-  "detailCategory": {
-    "mainIncome": [
-      {
-        "name": "월급"
-      },
-      {
-        "name": "기타"
-      }
-    ],
-    "subIncome": [
-      {
-        "name": "아르바이트"
-      },
-      {
-        "name": "주식"
-      },
-      {
-        "name": "코인"
-      },
-      {
-        "name": "이자"
-      },
-      {
-        "name": "기타"
-      }
-    ]
-  },
   "expense": [
     {
       "id": "1",
@@ -103,6 +100,13 @@
       "category": "",
       "amount": 0,
       "memo": ""
+    },
+    {
+      "id": "232e",
+      "date": "2024-06-10T14:27:21.372Z",
+      "category": "교통비",
+      "amount": "1000",
+      "memo": "카카오택시"
     }
   ],
   "expenseCategory": [
