@@ -4,6 +4,7 @@ import Income from '@/pages/Income.vue';
 import ShowIncome from '@/pages/ShowIncome.vue';
 import Expense from '@/pages/Expense.vue';
 import ShowExpense from '@/pages/ShowExpense.vue';
+import Store from '@/pages/Store.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/expense',
       name: 'expense',
       component: Expense,
+    },
+    {
+      path: '/store',
+      name: 'store',
+      component: Store,
     },
   ],
 });

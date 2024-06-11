@@ -10,6 +10,8 @@
     &nbsp;
     <router-link to="/showExpense">지출 내역</router-link>
     &nbsp;
+    <router-link to="/store">스토어 사용</router-link>
+    &nbsp;
   </div>
 </template>
 
