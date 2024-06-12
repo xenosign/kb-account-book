@@ -4,32 +4,46 @@
 </template>
 
 <script setup>
-import { defineProps, watch } from 'vue';
+import { defineProps, watch, ref } from 'vue';
 import { Doughnut } from 'vue-chartjs';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import {
-  data as chartDataConfig,
-  options as chartOptionsConfig,
-} from '@/assets/chartConfig';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const props = defineProps({
-  chartData: {
-    type: Object,
-    required: true,
-  },
-  chartOptions: {
-    type: Object,
+  data: {
+    type: Array,
     required: true,
   },
 });
 
-if (props.chartData) {
-  console.log('!!');
-}
-
-watch(props.chartData, () => {
-  console.log(props.chartData);
+const chartData = ref({
+  labels: ['식비', '교통비', '적금', '쇼핑', '이체'],
+  datasets: [
+    {
+      data: [1, 1, 1, 1, 1],
+      backgroundColor: ['#FFE70E', '#0DC9B9', '#41B6E8', '#E982AD', '#9771EF'],
+    },
+  ],
 });
+
+const chartOptions = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    tooltip: {
+      enabled: true,
+    },
+  },
+};
+
+watch(
+  () => props.data,
+  (newData) => {
+    chartData.value.datasets[0].data = newData.map((item) => item.data);
+    console.log(chartData);
+  }
+);
 </script>

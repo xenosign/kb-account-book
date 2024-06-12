@@ -119,5 +119,12 @@
       "memo": "Electricity bill",
       "id": "fc2c"
     }
+  ],
+  "graphData": [
+    { "data": 10 },
+    { "data": 20 },
+    { "data": 30 },
+    { "data": 40 },
+    { "data": 50 }
   ]
 }
