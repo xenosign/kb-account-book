@@ -7,6 +7,10 @@
 import { defineProps, watch } from 'vue';
 import { Doughnut } from 'vue-chartjs';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import {
+  data as chartDataConfig,
+  options as chartOptionsConfig,
+} from '@/assets/chartConfig';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -21,7 +25,11 @@ const props = defineProps({
   },
 });
 
-watch(props.chartData, () => {
+if (props.chartData) {
   console.log('!!');
+}
+
+watch(props.chartData, () => {
+  console.log(props.chartData);
 });
 </script>

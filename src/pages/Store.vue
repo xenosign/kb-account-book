@@ -66,11 +66,16 @@ function updateData() {
     .reduce((acc, cur) => acc + parseInt(cur.amount), 0);
 
   // 배열 업데이트
-  reactiveExpensesArray[0].amount = foodExpenses;
-  reactiveExpensesArray[1].amount = transportationExpenses;
-  reactiveExpensesArray[2].amount = savingsExpenses;
-  reactiveExpensesArray[3].amount = shoppingExpenses;
-  reactiveExpensesArray[4].amount = transferExpenses;
+  reactiveExpensesArray.find((item) => item.category === '식비').amount =
+    foodExpenses;
+  reactiveExpensesArray.find((item) => item.category === '교통비').amount =
+    transportationExpenses;
+  reactiveExpensesArray.find((item) => item.category === '적금').amount =
+    savingsExpenses;
+  reactiveExpensesArray.find((item) => item.category === '쇼핑').amount =
+    shoppingExpenses;
+  reactiveExpensesArray.find((item) => item.category === '이체').amount =
+    transferExpenses;
 
   totalAmount.value =
     foodExpenses +
