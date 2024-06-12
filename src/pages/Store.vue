@@ -1,46 +1,78 @@
 <template>
   <div>
-    <h1>Store</h1>
-    <DoughnutChart :data="graphData" />
-    <h2>수입</h2>
-    <ul>
-      <li v-for="data in accountBookIncome" :key="data.id">
-        {{ data.id }} / {{ data.date }} / {{ data.amount }} /
-        {{ data.memo }}
-      </li>
-    </ul>
-    <h2>지출</h2>
-    <ul>
-      <li v-for="data in accountBookExpense" :key="data.id">
-        {{ data.id }} / {{ data.date }} / {{ data.amount }} /
-        {{ data.memo }}
-      </li>
-    </ul>
+    <DoughnutChart :chart-data="chartData" :chart-options="chartOptions" />
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, computed, onUpdated, onMounted, watch } from 'vue';
-import { useAccountBookStore } from '@/stores/account.js';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 import DoughnutChart from '@/components/DoughnutChart.vue';
 
-const accountBookStore = useAccountBookStore();
-const { fetchIncomeData, fetchExpenseData, fetchGraphData } = accountBookStore;
-
-const accountBookIncome = computed(() => accountBookStore.accountBookIncome);
-const accountBookExpense = computed(() => accountBookStore.accountBookExpense);
-const graphData = computed(() => accountBookStore.graphData);
-
-onMounted(() => {
-  fetchIncomeData();
-  fetchExpenseData();
-  fetchGraphData();
+const chartData = ref({
+  labels: [],
+  datasets: [
+    {
+      label: 'Data',
+      backgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+        '#4BC0C0',
+        '#9966FF',
+        '#FF9F40',
+      ],
+      data: [],
+    },
+  ],
 });
 
-watch(
-  () => graphData.value,
-  (newData) => {
-    graphData.value = [...newData.map((item) => item.data)];
+const fetchData = async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/chartData');
+    const data = response.data;
+    chartData.value.labels = data.map((item) => item.label);
+    chartData.value.datasets[0].data = data.map((item) => item.value);
+  } catch (error) {
+    console.error('Error fetching data:', error);
   }
-);
+};
+
+const chartOptions = ref({
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        padding: 20, // 레이블과 레이블 사이의 간격 설정
+      },
+    },
+  },
+  layout: {
+    padding: {
+      left: 20,
+      right: 20,
+      top: 20,
+      bottom: 20,
+    },
+  },
+  elements: {
+    arc: {
+      borderWidth: 0,
+    },
+  },
+  responsive: true,
+  // maintainAspectRatio: false,
+  animation: {
+    animateScale: true,
+    animateRotate: true,
+  },
+});
+
+onMounted(() => {
+  fetchData();
+});
 </script>
+
+<style scoped>
+/* 스타일을 추가할 수 있습니다. */
+</style>

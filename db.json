@@ -120,11 +120,13 @@
       "id": "fc2c"
     }
   ],
-  "graphData": [
-    { "data": 10 },
-    { "data": 20 },
-    { "data": 30 },
-    { "data": 40 },
-    { "data": 50 }
+
+  "chartData": [
+    { "label": "Red", "value": 12 },
+    { "label": "Blue", "value": 19 },
+    { "label": "Yellow", "value": 3 },
+    { "label": "Green", "value": 5 },
+    { "label": "Purple", "value": 2 },
+    { "label": "Orange", "value": 3 }
   ]
 }

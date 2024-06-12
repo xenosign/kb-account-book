@@ -1,49 +1,61 @@
-<!-- DoughnutChart.vue -->
 <template>
-  <Doughnut :data="chartData" :options="chartOptions" />
+  <div>
+    <Doughnut v-if="chartDataReady" :data="chartData" :options="chartOptions" />
+  </div>
 </template>
 
 <script setup>
-import { defineProps, watch, ref } from 'vue';
+import { computed } from 'vue';
+import { defineProps, watch } from 'vue';
 import { Doughnut } from 'vue-chartjs';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+// Chart.js 플러그인 등록
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  CategoryScale,
+  LinearScale
+);
 
 const props = defineProps({
-  data: {
-    type: Array,
+  chartData: {
+    type: Object,
+    required: true,
+  },
+  chartOptions: {
+    type: Object,
     required: true,
   },
 });
 
-const chartData = ref({
-  labels: ['식비', '교통비', '적금', '쇼핑', '이체'],
-  datasets: [
-    {
-      data: [1, 1, 1, 1, 1],
-      backgroundColor: ['#FFE70E', '#0DC9B9', '#41B6E8', '#E982AD', '#9771EF'],
-    },
-  ],
+const chartDataReady = computed(() => {
+  return (
+    props.chartData.labels.length > 0 &&
+    props.chartData.datasets[0].data.length > 0
+  );
 });
 
-const chartOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    tooltip: {
-      enabled: true,
-    },
-  },
-};
-
+// 데이터 변화를 감지하고 콘솔에 로그를 남겨서 확인
 watch(
-  () => props.data,
-  (newData) => {
-    chartData.value.datasets[0].data = newData.map((item) => item.data);
-    console.log(chartData);
-  }
+  () => props.chartData,
+  (newValue) => {
+    console.log('Chart data updated:', newValue);
+  },
+  { deep: true }
 );
 </script>
+
+<style scoped>
+/* 스타일을 추가할 수 있습니다. */
+</style>
