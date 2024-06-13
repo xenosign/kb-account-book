@@ -18,7 +18,6 @@ import {
   LinearScale,
 } from 'chart.js';
 
-// Chart.js 플러그인 등록
 ChartJS.register(
   Title,
   Tooltip,
@@ -46,16 +45,11 @@ const chartDataReady = computed(() => {
   );
 });
 
-// 데이터 변화를 감지하고 콘솔에 로그를 남겨서 확인
 watch(
   () => props.chartData,
   (newValue) => {
-    console.log('Chart data updated:', newValue);
+    console.log('props 바뀜!!');
   },
   { deep: true }
 );
 </script>
-
-<style scoped>
-/* 스타일을 추가할 수 있습니다. */
-</style>

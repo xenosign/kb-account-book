@@ -16,11 +16,10 @@
       </select>
       <br />
       메모 :
-      <input type="text" v-model="expenseMemo" />
-      <br />
-      금액 : <input type="text" v-model="expense" />
-      <button @click="sendExpenseData">지출 등록</button>
+      <input type="text" v-model="expenseMemo" ref="selectInput" />
     </div>
+    금액 : <input type="text" v-model="expense" />
+    <button @click="sendExpenseData">지출 등록</button>
   </div>
 </template>
 
@@ -35,7 +34,6 @@ const expense = ref(0);
 const expenseSelect = ref('식비');
 const expenseCategory = ref([]);
 const expenseMemo = ref('');
-
 const isLoading = ref(true);
 
 async function fetchCategory(category) {
