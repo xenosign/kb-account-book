@@ -8,7 +8,7 @@
       <div>
         <h3>총 수입 : {{ totalIncome }}</h3>
         <h3 v-if="incomeSelect !== '전체'">
-          {{ incomeSelect }} 수입 : {{ categoryIncome }}
+          {{ monthSelect }} 수입 : {{ categoryIncome }}
         </h3>
       </div>
       <br />
@@ -16,7 +16,7 @@
         <div>
           <!-- 분류 정하기 -->
           분류 :
-          <select v-model="incomeSelect">
+          <select v-model="monthSelect">
             <option>전체</option>
             <option
               v-for="option in incomeCategory"
@@ -38,7 +38,6 @@
           <button @click="filterPeriod('all')">전체</button>
         </div>
         <br />
-        {{ new Date(start) }}
         <div>
           <h3>내역</h3>
 
@@ -119,7 +118,7 @@ watch(
     if (incomeSelect.value === '전체') return fetchShowData();
 
     incomeData.value = incomeDataCopy.value.filter(
-      (item) => item.category === incomeSelect.value
+      (item) => item.category === monthSelect.value
     );
 
     categoryIncome.value = incomeData.value.reduce(
